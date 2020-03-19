@@ -1,0 +1,33 @@
+version: "3"
+services:
+  redis:
+    image: redis
+    hostname: transportation-adapter-redis
+    container_name: transportation-adapter-redis
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+      - redis:/data
+    restart: unless-stopped
+    networks:
+      - default
+  api:
+    hostname: transportation-adapter-api
+    container_name: transportation-adapter-api
+    build:
+      context: ../
+      dockerfile: config/Dockerfile
+    environment:
+      REDIS_HOST: transportation-adapter-redis
+    ports:
+      - 8003:8000
+    restart: unless-stopped
+    networks:
+      - default
+    links:
+      - redis:transportation-adapter-redis
+
+networks:
+  default:
+
+volumes:
+  redis:

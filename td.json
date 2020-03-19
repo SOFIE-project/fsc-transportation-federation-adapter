@@ -1,0 +1,61 @@
+{
+  "@context": "https://www.w3.org/2019/wot/td/v1",
+  "title": "TransportationThing",
+  "id": "urn:dev:wot:com:sofie:fcp:adapter:transportation",
+  "description": "Transportation Federation Adapter Thing Description model for the Food Supply Chain pilot",
+  "securityDefinitions": { "nosec_sc":  { "scheme":  "nosec"}},
+  "security": "nosec_sc",
+  "properties": {
+    "transports": {
+      "type": "array",
+      "readOnly": true,
+      "description": "The array of transport ids served from the underlying Transportation IoT platform",
+      "items": {
+        "type": "string",
+        "description": "The transport id in hashed/encrypted form"
+      },
+      "forms": [{
+          "op": "readproperty",
+          "href": "{BASE}/api/transports",
+          "contentType": "application/json"
+      }]
+    },
+    "transport_boxes": {
+      "type": "array",
+      "readOnly": true,
+      "description": "The boxes that are part (inside) the given transport at that time",
+      "items": {
+        "type": "string",
+        "description": "The box id"
+      },
+      "uriVariables": {
+        "transportId": { "type": "string", "description": "The hashed/encrypted id of the transport"}
+      },
+      "forms": [{
+        "op": "readproperty",
+        "href": "{BASE}/api/transport/{transportId}/boxes",
+        "contentType": "application/json"
+      }]
+    },
+    "transport_readings": {
+      "type": "object",
+      "readOnly": true,
+      "description": "The readings of the specific transport",
+      "properties": {
+        "min_temperature": { "type": "number" },
+        "avg_temperature": { "type": "number" },
+        "max_temperature": { "type": "number" }
+      },
+      "uriVariables": {
+         "transportId": { "type": "string", "description": "The hashed/encrypted id of the transport"},
+         "start": { "type": "string", "description": "The start datetime of the readings"},
+         "end": { "type": "string", "description": "The end datetime of the readings"}
+      },
+      "forms": [{
+        "op": "readproperty",
+        "href": "{BASE}/api/transport/{transportId}/readings{?start,end}",
+        "contentType": "application/json"
+      }]
+    }
+  }
+}
