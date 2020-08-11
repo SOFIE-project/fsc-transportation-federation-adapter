@@ -8,7 +8,7 @@ coreschema==0.0.4
 cytoolz==0.10.1
 Django==2.2.10
 django-redis==4.9.0
-djangorestframework==3.8.2
+djangorestframework==3.9.1
 drf-yasg==1.7.4
 eth-abi==2.1.0
 eth-account==0.4.0
