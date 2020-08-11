@@ -9,7 +9,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Project wide settings
 PROXY_PREFIX = 'transportation'   # no end slashes, set to `None` when not used
 
-EXTERNAL_BASE_URI = 'https://192.168.1.167'
+EXTERNAL_BASE_URI = 'https://192.168.1.167'  # reported as URI BASE in Things Description Model
 
 if PROXY_PREFIX:
     STATIC_URL = '/' + PROXY_PREFIX + STATIC_URL
@@ -39,3 +39,10 @@ SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False,
     #'DEFAULT_API_URL': EXTERNAL_BASE_URI
 }
+
+# Indy settings
+INDY_WALLET_PATH = os.path.join(BASE_DIR, 'config/indy')
+INDY_WALLET_PASSWORD = SECRET_KEY
+
+# PDS component settings
+PDS_URI = 'http://192.168.1.117:9001'

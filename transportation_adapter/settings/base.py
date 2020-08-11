@@ -55,7 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'api.middleware.EthereumHeadersMiddleware'
+    'api.middleware.EthereumHeadersMiddleware',
+    'api.middleware.PdsJwtMiddleware'
 ]
 
 ROOT_URLCONF = 'transportation_adapter.urls'

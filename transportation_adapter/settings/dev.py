@@ -27,4 +27,9 @@ MONGODB_COLLECTION = 'logs_92794150186879175423'
 ETHEREUM_WALLET_PATH = os.path.join(BASE_DIR, 'config/wallet/keyfile.json')
 ETHEREUM_WALLET_PASSWORD_PATH = os.path.join(BASE_DIR, 'config/wallet/password.txt')
 
+# Indy settings
+INDY_WALLET_PATH = os.path.join(BASE_DIR, 'config/indy')
+INDY_WALLET_PASSWORD = SECRET_KEY
 
+# PDS component settings
+PDS_URI = 'http://127.0.0.1:9001'
