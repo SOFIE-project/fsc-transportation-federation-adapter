@@ -37,6 +37,13 @@ python3 manage.py runserver 0:8000
 
 The django development server is now running at ```localhost:8000```
 
+## Running the unit tests
+
+To run the unit tests, execute:
+
+```bash
+python3 manage.py test --settings=transportation_adapter.settings.test
+```
 
 ## Deploying with docker
 
